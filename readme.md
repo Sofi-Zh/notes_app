@@ -25,7 +25,7 @@ http://127.0.0.1:5000
 
 ## To run an application:
 ```bash
-git clone https://github.com/USERNAME/notes_app.git
+git clone https://github.com/Sofi-Zh/notes_app.git
 cd notes_app
 pip install -r requirements.txt
 python app.py
