@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} My notes {% endblock %}
+
+{% block content %}
+
+<div id="info">
+    <h1> My notes </h1>
+</div>
+
+<!--<div id="content">-->
+<!--    {% for note in notes %}-->
+<!--        <li>-->
+<!--            <a href="{{ url_for('note_details', id = note.id)}}"> {{ note.title }} {{ note.time}} </a>-->
+<!--        </li>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+<div>
+    <table id="table">
+        <tr>
+            <th> Creation time </th>
+            <th> Note title </th>
+        </tr>
+        {% for note in notes %}
+        <tr>
+            <td> {{ note.time }} </td>
+            <td><a href="{{ url_for('note_details', id = note.id)}}"> {{ note.title }} </a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

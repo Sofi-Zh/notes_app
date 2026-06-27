@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} {% if note %} Edit note {% else %} Add a note {% endif %} {% endblock %}
+
+{% block content %}
+
+<div id="info">
+    <h1> {% if note %} Edit note {% else %} Add a note {% endif %}</h1>
+</div>
+
+<div id="notes">
+        {% for m in messages %}
+            <p style="color: lightcoral;"> {{ m }} </p>
+        {% endfor %}
+
+    <form method="POST">
+        <p><input type="text" name="title" style="width:1000px; height: 20px;" maxlength="25" placeholder="Note title"
+        value="{{ note.title if note else ''}}"></p>
+        <p><textarea name="content" placeholder="Add your note here" style="width:1000px; height: 450px;">{{note.content if note
+            else ''}}</textarea></p>
+        <button>Save</button>
+    </form>
+
+    <p><a class="button" href="{{ url_for('all_notes')}}"> Discard </a></p>
+
+</div>
+
+{% endblock %}

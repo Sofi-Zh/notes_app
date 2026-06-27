@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Notebook homepage {% endblock %}
+
+{% block content %}
+
+<div id="info">
+    <h1> Notebook homepage </h1>
+</div>
+
+<div id="content">
+     <h3>Welcome to the notebook. Add and store your notes in one place. </h3>
+     <p> Navigation: </p>
+     <p> Click here to see <a class="button" href="{{ url_for('all_notes') }}"> my notes </a> </p>
+     <p> Click here to add <a class="button" href="{{ url_for('new_note') }}"> a new note </a> </p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Note {% endblock %}
+
+{% block content %}
+
+<div id="info">
+    <h1> {{ note_details.title }} </h1>
+</div>
+
+<div id="content">
+    <h2> {{ note_details.content }} </h2>
+    <p> Note added: {{ note_details.time }} </p>
+
+
+    <a class="button" href="{{ url_for('edit_note', id=note_details.id) }}"> Edit note </a>
+
+    <form method="POST" action="{{ url_for('delete_note', id=note_details.id) }}"
+          onsubmit="return confirm ('Delete note?');" style='display:inline;'>
+        <button> Delete </button>
+    </form>
+
+    <p><a class="button" href="{{ url_for('all_notes') }}">Go to my notes</a></p>
+</div>
+
+{% endblock %}

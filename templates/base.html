@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} Notebook {% endblock %} </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% for m in messages %}
+            <p style="color: lightcoral;"> {{ m }} </p>
+        {% endfor %}
+    {% endwith %}
+    <nav>
+        <a href="/"> Notebook homepage </a>
+        <a href="/notes"> My Notes </a>
+        <a href="/notes/add"> Add Note </a>
+    </nav>
+    <hr>
+{% block content %}
+{% endblock %}
+<hr>
+<footer> SZH Мини-проект: сайт-заметки на Flask </footer>
+</body>
+</html>
