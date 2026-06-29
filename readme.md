@@ -19,6 +19,7 @@
 -`note_details(id)` – displays the details of a note
 -`edit_note(id)` – edits an existing note
 -`delete_note(id)` – deletes a note
+-`reset(id)` – delete all notes
 
 ## Link to open:
 http://127.0.0.1:5000
