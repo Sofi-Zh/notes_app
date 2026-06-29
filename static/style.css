@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     background-image: linear-gradient(to bottom, #CFB6F7,#E5F3FF);
     font-family: Helvetica, sans-serif;
@@ -81,6 +85,11 @@ th{
 
 td{
     padding:14px;
+}
+
+#reset{
+    text-align: center;
+    margin-top: 50px;
 }
 
 #table a:link {color:blue;}

@@ -106,6 +106,24 @@ def delete_note(id):
     flash("Note deleted successfully")
     return redirect(url_for("all_notes"))
 
+@app.route('/notes/reset', methods=["GET", "POST"])
+def reset():
+    if request.method == "GET":
+        return render_template("notes_reset.html")
+    admit_password = "reset"
+    password = request.form.get("password")
+
+    if password == admit_password:
+        conn = get_db()
+        conn.execute('''
+            DELETE FROM notes''')
+        conn.commit()
+        conn.close()
+        flash("All notes reset successfully")
+    else:
+        flash("Incorrect password")
+    return redirect(url_for("index"))
+
 if __name__ == "__main__":
     init_db()
     app.run(debug=True)
