@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -43,7 +43,7 @@ def note_details(id):
     note_details = conn.execute("SELECT * FROM notes WHERE id = ?", (id,)).fetchone()
     conn.close()
     if note_details is None:
-        return "Note not found", 404
+        abort(404)
     return render_template("note_details.html", note_details=note_details)
 
 @app.route('/notes/add', methods=['GET', 'POST'])
@@ -73,7 +73,7 @@ def edit_note(id):
 
     if note is None:
         conn.close()
-        return "Note not found", 404
+        abort(404)
 
     if request.method == "POST":
         title = request.form["title"]
@@ -103,7 +103,7 @@ def delete_note(id):
     ''', (id,))
     conn.commit()
     conn.close()
-    flash (f"Note deleted successfully")
+    flash("Note deleted successfully")
     return redirect(url_for("all_notes"))
 
 if __name__ == "__main__":

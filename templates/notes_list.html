@@ -7,13 +7,6 @@
     <h1> My notes </h1>
 </div>
 
-<!--<div id="content">-->
-<!--    {% for note in notes %}-->
-<!--        <li>-->
-<!--            <a href="{{ url_for('note_details', id = note.id)}}"> {{ note.title }} {{ note.time}} </a>-->
-<!--        </li>-->
-<!--    {% endfor %}-->
-<!--</div>-->
 <div>
     <table id="table">
         <tr>
@@ -24,7 +17,10 @@
         <tr>
             <td> {{ note.time }} </td>
             <td><a href="{{ url_for('note_details', id = note.id)}}"> {{ note.title }} </a></td>
-
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">There are no notes yet. <a href="{{ url_for('new_note') }}"> Add a first note </a></td>
         </tr>
         {% endfor %}
     </table>
